@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "893997975281",
+    "project_id": "webjournalandoird",
+    "storage_bucket": "webjournalandoird.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893997975281:android:1519d8643356e8d1eecb50",
+        "android_client_info": {
+          "package_name": "com.example.webjournal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-nD4yp6rUaofB_dEXz-cobpZVKJQcC4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
