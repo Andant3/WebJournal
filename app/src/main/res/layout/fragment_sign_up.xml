@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.SignUpFragment"
+    android:background="@drawable/background_gradient">
+
+    <TextView
+        android:id="@+id/registerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+
+        android:text="    Sign up to \nWebJournal App"
+        android:textSize="32sp"
+        android:textColor="@color/color_accent"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/loginNewEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+
+        android:hint="Enter your login"
+        android:inputType="text"
+
+        app:layout_constraintTop_toBottomOf="@+id/registerTextView"
+        app:layout_constraintStart_toStartOf="@id/registerTextView"
+        app:layout_constraintEnd_toEndOf="@id/registerTextView"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/passwordNewEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+
+        android:hint="Enter your password"
+        android:inputType="textPassword"
+
+        app:layout_constraintTop_toBottomOf="@+id/loginNewEditText"
+        app:layout_constraintStart_toStartOf="@id/registerTextView"
+        app:layout_constraintEnd_toEndOf="@id/registerTextView"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/passwordConfirmEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="30dp"
+
+        android:hint="Confirm password"
+
+
+        app:layout_constraintTop_toBottomOf="@+id/passwordNewEditText"
+        app:layout_constraintStart_toStartOf="@id/registerTextView"
+        app:layout_constraintEnd_toEndOf="@id/registerTextView"/>
+
+    <Button
+        android:id="@+id/createAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/color_primary_dark"
+        android:layout_marginTop="50dp"
+
+        android:text="Create Account"
+        android:textColor="@color/white"
+
+        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmEditText"
+        app:layout_constraintStart_toStartOf="@id/registerTextView"
+        app:layout_constraintEnd_toEndOf="@id/registerTextView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
