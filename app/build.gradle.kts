@@ -36,7 +36,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
 }
@@ -57,6 +57,9 @@ dependencies {
 
     // Cloud Firestore
     implementation("com.google.firebase:firebase-firestore")
+
+    // Firebase Authentication library
+    implementation("com.google.firebase:firebase-auth")
 
     // Navigation
     val nav_version = "2.7.7"
