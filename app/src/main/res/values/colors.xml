@@ -5,5 +5,7 @@
     <color name="color_background">#ECF4F3</color>
     <color name="color_primary">#76DBD1</color>
     <color name="color_primary_dark">#57A99A</color>
+    <color name="color_primary_light">#14C8A7</color>
     <color name="color_accent">#555151</color>
+    <color name="color_card">#F6ECE1</color>
 </resources>

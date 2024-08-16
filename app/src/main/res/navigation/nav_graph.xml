@@ -23,4 +23,9 @@
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/journalFragment"
+        android:name="com.example.webjournal.view.JournalFragment"
+        android:label="fragment_journal"
+        tools:layout="@layout/fragment_journal" />
 </navigation>
