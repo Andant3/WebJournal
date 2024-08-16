@@ -1,8 +1,9 @@
-package com.example.webjournal
+package com.example.webjournal.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.webjournal.R
 import com.example.webjournal.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -26,8 +27,12 @@ class MainActivity : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            //reload()
+            reload()
         }
+    }
+
+    private fun reload() {
+        TODO("Not yet implemented")
     }
 }
 
