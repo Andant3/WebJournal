@@ -60,7 +60,7 @@ class SignUpFragment : Fragment() {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("TAG", "createUserWithEmail:success")
                         val user = auth.currentUser
-                        updateUI(user)
+                        //updateUI(user)
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w("TAG", "createUserWithEmail:failure", task.exception)
@@ -69,7 +69,7 @@ class SignUpFragment : Fragment() {
                             "Authentication failed.",
                             Toast.LENGTH_SHORT,
                         ).show()
-                        updateUI(null)
+                        //updateUI(null)
                     }
                 }
         } else {

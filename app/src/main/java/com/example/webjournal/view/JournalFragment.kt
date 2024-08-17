@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import androidx.transition.Visibility
 import com.example.webjournal.R
 import com.example.webjournal.databinding.FragmentJournalBinding
@@ -59,5 +62,15 @@ class JournalFragment : Fragment() {
 
         noPagesLayout = binding.noPagesLayout
         noPagesLayout.visibility = View.INVISIBLE
+
+        binding.pagesRecyclerView.setHasFixedSize(true)
+        binding.pagesRecyclerView.layoutManager =
+            LinearLayoutManager(context)
+
+        journalList = arrayListOf<Journal>()
+
+        binding.addButton.setOnClickListener {
+            findNavController().navigate(R.id.action_journalFragment_to_addPageFragment)
+        }
     }
 }
