@@ -45,7 +45,8 @@ class SignUpFragment : Fragment() {
                 createAccount(email, password)
             }
             homeButton.setOnClickListener {
-                it.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+                it.findNavController()
+                    .navigate(R.id.action_signUpFragment_to_loginFragment)
             }
         }
     }

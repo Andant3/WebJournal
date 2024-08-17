@@ -61,6 +61,9 @@ dependencies {
     // Firebase Authentication library
     implementation("com.google.firebase:firebase-auth")
 
+    // Add the dependency for the Cloud Storage library
+    implementation("com.google.firebase:firebase-storage")
+
     // Navigation
     val nav_version = "2.7.7"
     // Kotlin
