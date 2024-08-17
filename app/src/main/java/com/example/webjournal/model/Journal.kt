@@ -3,12 +3,12 @@ package com.example.webjournal.model
 import com.google.firebase.Timestamp
 
 data class Journal(
-    private val title: String,
-    private val description: String,
-    private val imageURL: String,
+    val title: String,
+    val description: String,
+    val imageURL: Int,
 
-    private val userID: String,
-    private val timeAdded: Timestamp,
-    private val username: String
+    val userID: String,
+    val timeAdded: Timestamp,
+    val username: String
 ) {
 }
