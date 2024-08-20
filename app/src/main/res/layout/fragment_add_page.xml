@@ -1,14 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AddPageFragment">
+    tools:context=".view.AddPageFragment"
+    android:background="@drawable/background_gradient_main">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/addPhotoImg"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/add_photo"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/postTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
 
-</FrameLayout>
+        android:text="Post Title"
+        android:textSize="32sp"
+        android:textColor="@color/color_accent"
+
+        app:layout_constraintTop_toBottomOf="@id/addPhotoImg"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/postDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+
+        android:text="Post Date"
+        android:textSize="16sp"
+        android:textColor="@color/color_accent"
+
+        app:layout_constraintTop_toBottomOf="@id/postTitleTextView"
+        app:layout_constraintEnd_toEndOf="@id/postTitleTextView"/>
+
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+
+        android:hint="Post Title"
+
+        app:layout_constraintTop_toBottomOf="@id/postDateTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        android:background="@color/color_background"
+        app:layout_constraintTop_toBottomOf="@id/titleEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:gravity="start|top"
+
+            android:background="@null"
+
+            android:hint="Post Text..."
+            android:inputType="textMultiLine"
+            android:ems="10"/>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

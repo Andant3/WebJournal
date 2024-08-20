@@ -25,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         firebaseAuth = Firebase.auth
-
-
     }
 
     override fun onStart() {
@@ -34,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = firebaseAuth.currentUser
         if (currentUser != null) {
-            reload()
+            //reload()
         }
     }
 
@@ -43,13 +41,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when(item.itemId){
             R.id.action_signOut -> if (firebaseAuth != null
                 && firebaseAuth.currentUser != null) {
