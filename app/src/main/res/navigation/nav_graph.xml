@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_journalFragment"
+            app:destination="@id/journalFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -27,5 +30,21 @@
         android:id="@+id/journalFragment"
         android:name="com.example.webjournal.view.JournalFragment"
         android:label="fragment_journal"
-        tools:layout="@layout/fragment_journal" />
+        tools:layout="@layout/fragment_journal" >
+        <action
+            android:id="@+id/action_journalFragment_to_addPageFragment"
+            app:destination="@id/addPageFragment" />
+        <action
+            android:id="@+id/action_journalFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPageFragment"
+        android:name="com.example.webjournal.view.AddPageFragment"
+        android:label="fragment_add_page"
+        tools:layout="@layout/fragment_add_page" >
+        <action
+            android:id="@+id/action_addPageFragment_to_journalFragment"
+            app:destination="@id/journalFragment" />
+    </fragment>
 </navigation>
