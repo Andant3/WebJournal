@@ -4,7 +4,7 @@ import android.app.Application
 
 class JournalUser: Application() {
 
-    var username : String? = null
+    var userName : String? = null
     var userId : String? = null
 
     companion object {

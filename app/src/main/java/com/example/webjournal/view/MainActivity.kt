@@ -5,7 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.webjournal.R
@@ -41,7 +41,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(binding.navHostFragmentContainer.id) as NavHostFragment
+        val navController = navHostFragment.navController
+        val currentFragmentId = navController.currentDestination?.id
+
+        when(currentFragmentId){
+            R.id.journalFragment ->{
+                menuInflater.inflate(R.menu.main_menu, menu)
+            }
+            R.id.addPageFragment ->{
+                menuInflater.inflate(R.menu.add_menu, menu)
+            }
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -52,9 +64,13 @@ class MainActivity : AppCompatActivity() {
 
                 firebaseAuth.signOut()
                 val navHostFragment =
-                    supportFragmentManager.findFragmentById(R.id.loginFragment) as NavHostFragment
+                    supportFragmentManager.findFragmentById(binding.navHostFragmentContainer.id) as NavHostFragment
                 val navController = navHostFragment.navController
                 navController.navigate(R.id.action_journalFragment_to_loginFragment)
+            }
+            R.id.action_saveItem -> {
+                var fragment: AddPageFragment = supportFragmentManager.findFragmentById(R.id.addPageFragment) as AddPageFragment
+                fragment.saveJournal()
             }
         }
         return super.onOptionsItemSelected(item)

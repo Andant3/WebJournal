@@ -21,6 +21,19 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
+        android:id="@+id/loadingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="28dp"
+
+        android:text="Wait"
+        android:textStyle="italic"
+
+        app:layout_constraintTop_toBottomOf="@+id/addPhotoImg"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
         android:id="@+id/postTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,6 +85,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <EditText
+            android:id="@+id/postEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
