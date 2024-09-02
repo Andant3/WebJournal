@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
 
-                android:background="@{journal.imageURL}"
+                android:background="@{Integer.parseInt(journal.imageURL)}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
