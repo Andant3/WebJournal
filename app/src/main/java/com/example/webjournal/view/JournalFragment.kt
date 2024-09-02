@@ -1,42 +1,38 @@
 package com.example.webjournal.view
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import androidx.transition.Visibility
 import com.example.webjournal.R
 import com.example.webjournal.databinding.FragmentJournalBinding
-import com.example.webjournal.databinding.FragmentLoginBinding
-import com.example.webjournal.databinding.FragmentSignUpBinding
 import com.example.webjournal.model.Journal
 import com.example.webjournal.model.JournalUser
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.auth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.toObject
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class JournalFragment : Fragment() {
+class JournalFragment : Fragment(){
 
     private lateinit var binding: FragmentJournalBinding
 
     // Firebase references
-    private lateinit var fireBaseAuth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private lateinit var user : FirebaseUser
 
     private var dataBase = FirebaseFirestore.getInstance()
@@ -64,8 +60,9 @@ class JournalFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        fireBaseAuth = FirebaseAuth.getInstance()
-        user = fireBaseAuth.currentUser!!
+
+        auth = FirebaseAuth.getInstance()
+        user = auth.currentUser!!
         storageReference = FirebaseStorage.getInstance().reference
 
         noPagesLayout = binding.noPagesLayout
@@ -80,6 +77,23 @@ class JournalFragment : Fragment() {
         binding.addButton.setOnClickListener {
             findNavController().navigate(R.id.action_journalFragment_to_addPageFragment)
         }
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.sign_out_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                if (auth != null
+                    && auth.currentUser != null
+                ) {
+                    auth.signOut()
+                    findNavController().navigate(R.id.action_journalFragment_to_loginFragment)
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     override fun onStart() {
@@ -116,6 +130,5 @@ class JournalFragment : Fragment() {
 
                 Log.i("TAGY", "Unsuccessful collection reference JournalFragment")
             }
-
     }
 }

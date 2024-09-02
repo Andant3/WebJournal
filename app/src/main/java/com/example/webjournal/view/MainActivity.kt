@@ -3,9 +3,11 @@ package com.example.webjournal.view
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import com.example.webjournal.R
@@ -48,44 +50,6 @@ class MainActivity : AppCompatActivity() {
     private fun reload() {
         TODO("Not yet implemented")
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(binding.navHostFragmentContainer.id) as NavHostFragment
-        val navController = navHostFragment.navController
-        val currentFragmentId = navController.currentDestination?.id
-
-        when(currentFragmentId){
-            R.id.loginFragment ->{
-                menuInflater.inflate(R.menu.main_menu, menu)
-            }
-            R.id.journalFragment ->{
-                menuInflater.inflate(R.menu.main_menu, menu)
-            }
-            R.id.addPageFragment ->{
-                menuInflater.inflate(R.menu.add_menu, menu)
-            }
-        }
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.action_signOut -> if (auth != null
-                && auth.currentUser != null) {
-
-                auth.signOut()
-                val navHostFragment =
-                    supportFragmentManager.findFragmentById(binding.navHostFragmentContainer.id) as NavHostFragment
-                val navController = navHostFragment.navController
-                navController.navigate(R.id.action_journalFragment_to_loginFragment)
-            }
-            R.id.action_saveItem -> {
-                var fragment: AddPageFragment = supportFragmentManager.findFragmentById(R.id.addPageFragment) as AddPageFragment
-                fragment.saveJournal()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 }
+
 

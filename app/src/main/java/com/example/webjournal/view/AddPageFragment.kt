@@ -6,11 +6,16 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.webjournal.R
 import com.example.webjournal.databinding.FragmentAddPageBinding
@@ -53,12 +58,12 @@ class AddPageFragment : Fragment() {
     var collectionReference: CollectionReference = database.collection("Journal")
     private lateinit var imageUri: Uri
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         binding = FragmentAddPageBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -82,6 +87,16 @@ class AddPageFragment : Fragment() {
                 openPickActivityForResult()
             }
         }
+        requireActivity().addMenuProvider(object: MenuProvider{
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.add_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                saveJournal()
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     private suspend fun loadingTextViewAnimation(){
@@ -148,7 +163,7 @@ class AddPageFragment : Fragment() {
         }
     }
 
-    fun openPickActivityForResult() {
+    private fun openPickActivityForResult() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         resultLauncher.launch(intent)
@@ -177,5 +192,4 @@ class AddPageFragment : Fragment() {
 
         }
     }
-
 }
